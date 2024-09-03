@@ -118,20 +118,190 @@
       },
       "/api/users/login" : {
         "post" : {
-          "description": "Login user"
+          "description": "Login user",
+          "requestBody" : {
+            "content": {
+              "application/json" : {
+                "schema" : {
+                  "type": "object",
+                  "properties": {
+                    "username" : {
+                      "type": "string"
+                    },
+                    "password" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200" : {
+              "description": "Success Login",
+              "content": {
+                "application/json" : {
+                  "schema" : {
+                    "type": "object",
+                    "properties": {
+                      "data" : {
+                        "type": "object",
+                        "properties": {
+                          "id" :{
+                            "type": "number"
+                          },
+                          "username" : {
+                            "type": "string"
+                          },
+                          "name" : {
+                            "type": "string"
+                          },
+                          "token" : {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "error" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "/api/users/current" : {
         "get" : {
-          "description": "Get current user"
+          "description": "Get current user",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in" : "header"
+            }
+          ],
+          "responses": {
+            "200" : {
+              "description": "Success Get Current User",
+              "content": {
+                "application/json" : {
+                  "schema" : {
+                    "type": "object",
+                    "properties": {
+                      "data" : {
+                        "type": "object",
+                        "properties": {
+                          "id" :{
+                            "type": "number"
+                          },
+                          "username" : {
+                            "type": "string"
+                          },
+                          "name" : {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "error" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "patch" :{
-          "description": "Update current user"
+          "description": "Update current user",
+          "parameters": [
+            {
+              "name" : "Authorization",
+              "in" : "header"
+            }
+          ],
+          "requestBody": {
+            "description": "update current user",
+            "content": {
+              "application/json" : {
+                "schema" : {
+                  "type": "object",
+                  "properties": {
+                    "name" : {
+                      "type": "string"
+                    },
+                    "password" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200" : {
+              "description": "Success Update User",
+              "content": {
+                "application/json" : {
+                  "schema" : {
+                    "type": "object",
+                    "properties": {
+                      "data" : {
+                        "type": "object",
+                        "properties": {
+                          "id" :{
+                            "type": "number"
+                          },
+                          "username" : {
+                            "type": "string"
+                          },
+                          "name" : {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "error" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
         }
       },
       "/api/users/logout" : {
         "delete" : {
-          "description": "Logout current user"
+          "description": "Logout current user",
+          "parameters": [
+            {
+              "name" : "Authorization",
+              "in" : "header"
+            }
+          ],
+          "responses": {
+            "200" : {
+              "description": "Success Logout User",
+              "content": {
+                "application/json" : {
+                  "schema" : {
+                    "type": "object",
+                    "properties": {
+                      "data" : {
+                        "type": "boolean"
+                      },
+                      "error" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
