@@ -94,10 +94,66 @@
               "in": "header"
             },
             {
-              "name": "id",
-              "in": "path"
+              "name": "name",
+              "in": "query"
+            },
+            {
+              "name": "phone",
+              "in": "query"
+            },
+            {
+              "name": "email",
+              "in": "query"
+            },
+            {
+              "name": "size",
+              "in": "query"
+            },
+            {
+              "name": "page",
+              "in": "query"
             }
-          ]
+          ],
+          "responses": {
+            "200" : {
+              "description": "success search contacts",
+              "content": {
+                "application/json" : {
+                  "schema" : {
+                    "type": "object",
+                    "properties": {
+                      "data" : {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "first_name" : {
+                            "type": "string"
+                            },
+                            "last_name": {
+                              "type": "string"
+                            },
+                            "email" : {
+                              "type": "string"
+                            },
+                            "phone" : {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "errors" : {
+                        "type": "object"
+                      },
+                      "meta" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
 
         }
       },
@@ -237,7 +293,27 @@
               "name": "id",
               "in": "path"
             }
-          ]
+          ],
+          "responses": {
+            "200" : {
+              "description": "success get contact",
+              "content": {
+                "application/json" : {
+                  "schema" : {
+                    "type": "object",
+                    "properties": {
+                      "data" : {
+                        "type": "boolean"
+                      },
+                      "errors" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
         
       }
